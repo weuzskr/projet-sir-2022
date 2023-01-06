@@ -36,11 +36,11 @@ pipeline {
                                             }
                              stage('Push') {
 
-                                                         steps {
-                                                           withDockerRegistry([credentialsId: "groupe5" ,url:"" ]){
-                                                           bat 'docker push projetsir2022/projet2022:groupe5'
+                                                       /*  steps {
+                                                           withDockerRegistry([credentialsId: "groupe-4" ,url:"" ]){
+                                                           bat 'docker push projetsir2022/projet-sir:groupe-4'
                                                            }
-                                                         }
+                                                         }*/
                                                        }
 
           }
