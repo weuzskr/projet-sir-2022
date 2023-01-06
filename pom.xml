@@ -15,14 +15,19 @@
     <description>formation-demo1</description>
     <properties>
         <java.version>17</java.version>
-      <!-- <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+      <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
         <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
         <sonar.junit.reportsPath>${project.basedir}/../target/</sonar.junit.reportsPath>
-        <sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
+        <!-- <sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath> -->
         <sonar.tests>${project.basedir}/src/test/</sonar.tests>
-        <sonar.language>java</sonar.language>  -->
+        <sonar.language>java</sonar.language>
     </properties>
     <dependencies>
+        <dependency>
+            <groupId>org.jacoco</groupId>
+            <artifactId>jacoco-maven-plugin</artifactId>
+            <version>0.8.8</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
@@ -106,8 +111,6 @@
             <artifactId>sonar-maven-plugin</artifactId>
             <version>3.7.0.1746</version>
         </dependency>
-
-
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
@@ -150,22 +153,25 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.8</version>
+
+                <version>0.8.7</version>
                 <executions>
                     <execution>
-                        <id>prepare-agent</id>
+                        <id>jacoco-initialize</id>
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
                     </execution>
                     <execution>
-                        <id>report</id>
+                        <id>jacoco-site</id>
+                        <phase>package</phase>
                         <goals>
                             <goal>report</goal>
                         </goals>
                     </execution>
                 </executions>
             </plugin>
+
         </plugins>
     </build>
 
