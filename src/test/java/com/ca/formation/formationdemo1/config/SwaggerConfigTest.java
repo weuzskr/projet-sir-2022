@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @SpringBootTest
 @AutoConfigureMockMvc
 class SwaggerConfigTest {
-      @Autowired
+    @Autowired
     private SwaggerConfig swaggerConfig;
 
     @Test

@@ -45,7 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private String apiDocPath;
     @Value("${springdoc.swagger-ui.path}")
     private String swaggerPath;
-    Logger logger= LoggerFactory.getLogger( SecurityConfig.class);
+    //Logger logger= LoggerFactory.getLogger( SecurityConfig.class);
 
     public SecurityConfig(UtilisateurRepository utilisateurRepository, JwtFilter jwtFilter) {
 
@@ -53,7 +53,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         this.jwtFilter = jwtFilter;
         SecurityContextHolder.setStrategyName(SecurityContextHolder.MODE_INHERITABLETHREADLOCAL);
     }
-@Override
+    @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
         auth.userDetailsService(username -> utilisateurRepository
@@ -85,8 +85,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling()
                 .authenticationEntryPoint(
                         ((request, response, authException) -> {
-                            logger.info("Demande pas autoriser -");
-                             logger.info(authException.getMessage());
+                           // logger.info("Demande pas autoriser -");
+                            //logger.info(authException.getMessage());
                             response.sendError(HttpServletResponse.SC_UNAUTHORIZED, authException.getMessage());
                         })
                 )

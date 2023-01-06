@@ -145,18 +145,18 @@ public class PersonneRepositoryTest {
     @Test
     public void findbyid(){
         //Given
-        Personne pers = personneRepository.save(new Personne("seck", "baye", 24));
+        Personne pers = personneRepository.save(new Personne("lahm", "phillip", 24));
         //When
         Optional<Personne> person = personneRepository.findById(pers.getId());
         //Then
         assertNotNull(person);
-        assertEquals("seck", person.get().getNom());
+        assertEquals("lahm", person.get().getNom());
     }
 
 
     @Test
     public void deletePerson(){
-        Personne person  =  personneRepository.save(new Personne("baye","seck",24));
+        Personne person  =  personneRepository.save(new Personne("phillip","lahm",24));
         //Personne person = personneRepository.findById(1L).get();
         personneRepository.delete(personneRepository.findById(person.getId()).get());
 

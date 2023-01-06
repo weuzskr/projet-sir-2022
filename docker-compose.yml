@@ -1,0 +1,22 @@
+version: '3.1'
+
+services:
+  app:
+    container_name: projet-g-4
+    image: projet-sir-g-4
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+  db_mysql:
+    container_name: projet-sir-db
+    image: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_USER: root
+      MYSQL_PASSWORD: ""
+      MYSQL_DATABASE: projet-sir

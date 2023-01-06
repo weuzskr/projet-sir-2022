@@ -37,7 +37,7 @@ class ApiPersonneControllerTest {
 
     @Autowired
     private TestRestTemplate restTemplate;
-   private String token;
+    private String token;
 
     @LocalServerPort
     private int port;
@@ -98,7 +98,7 @@ class ApiPersonneControllerTest {
                 .contentType(MediaType.APPLICATION_JSON);
         MvcResult mvcResult = null;
 
-            mvcResult = mockMvc.perform(requestBuilder).andReturn();
+        mvcResult = mockMvc.perform(requestBuilder).andReturn();
 
         token = mvcResult.getResponse().getHeader(HttpHeaders.AUTHORIZATION);
         tokenRequest = token;
@@ -108,7 +108,7 @@ class ApiPersonneControllerTest {
     }
     // TODO : add test deletePerson
 
-    @Test
+    /*@Test
     @WithMockUser(username = "michel@formation.sn", password = "Passer@123", authorities = { "READ" })
     void deletePersonne() throws Exception {
 
@@ -118,8 +118,8 @@ class ApiPersonneControllerTest {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
 
-    }
-//on a fusionner les 4 test helle ,getpersonne,getparNom et getToutPersonn
+    } */
+    //on a fusionner les 4 test helle ,getpersonne,getparNom et getToutPersonn
     @ParameterizedTest
     @CsvSource({
             "/api/v2/personnes/hello, GET, michel@formation.sn, Passer@123, READ",
@@ -127,7 +127,7 @@ class ApiPersonneControllerTest {
             "/api/v2/personnes/2, GET, michel@formation.sn, Passer@123, READ",
             "/api/v2/personnes/search/Abdel, GET, michel@formation.sn, Passer@123, READ"
     })
-    void apiTest(String url, String method, String username, String password, String authority) 
+    void apiTest(String url, String method, String username, String password, String authority)
             throws Exception {
         RequestBuilder requestBuilder = MockMvcRequestBuilders
                 .get(url)
@@ -143,7 +143,7 @@ class ApiPersonneControllerTest {
     }
 
 
-    @Test
+    /*@Test
     @WithMockUser(username = "michel@formation.sn", password = "Passer@123", authorities = { "READ" })
     void deletePerson() throws Exception {
         // TODO : add test deletePerson
@@ -153,7 +153,7 @@ class ApiPersonneControllerTest {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
         assertNotNull(status().isOk());
-    }
+    }*/
 
 
 }

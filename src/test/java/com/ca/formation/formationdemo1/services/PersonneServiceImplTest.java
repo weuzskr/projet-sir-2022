@@ -32,8 +32,8 @@ import static org.mockito.Mockito.*;
 @RunWith(SpringRunner.class)
 public class PersonneServiceImplTest {
 
-  @Mock
-  PersonneRepository personneRepository;
+    @Mock
+    PersonneRepository personneRepository;
     Personne personne;
 
     @Mock
@@ -41,8 +41,8 @@ public class PersonneServiceImplTest {
     @InjectMocks
     private UtilisateurServiceImpl utilisateurServiceImpl;
 
-  @InjectMocks
-  private PersonneServiceImpl personneServiceImpl;
+    @InjectMocks
+    private PersonneServiceImpl personneServiceImpl;
     @Mock
     UtilisateurRepository utilisateurRepository;
     @Mock
@@ -96,34 +96,34 @@ public class PersonneServiceImplTest {
         assertEquals(utilisateurMock, utilisateurResponse);
     }
 
-  @Test
-  public void ajouterPersonne() {
-    Personne personne = new Personne("tonux", "samb", 50);
-    personne.setId(1L);
-    when(personneRepository.save(any())).thenReturn(personne);
+    @Test
+    public void ajouterPersonne() {
+        Personne personne = new Personne("tonux", "samb", 50);
+        personne.setId(1L);
+        when(personneRepository.save(any())).thenReturn(personne);
 
-    Personne personneResponse = personneServiceImpl.addPersonne(new Personne("tonux", "samb", 50));
+        Personne personneResponse = personneServiceImpl.addPersonne(new Personne("tonux", "samb", 50));
 
-    assertNotNull(personneResponse);
+        assertNotNull(personneResponse);
 
-    verify(personneRepository, atLeastOnce()).save(any());
-  }
-  @Test
- public void addPersonne() {
-    //Given
-    Personne personneResponse = new Personne("tonux", "samb", 50);
-    personneResponse.setId(1L);
-    when(personneRepository.save(any())).thenReturn(personneResponse);
+        verify(personneRepository, atLeastOnce()).save(any());
+    }
+    @Test
+    public void addPersonne() {
+        //Given
+        Personne personneResponse = new Personne("tonux", "samb", 50);
+        personneResponse.setId(1L);
+        when(personneRepository.save(any())).thenReturn(personneResponse);
 
-    //When
-    Personne personAded =personneServiceImpl.addPersonne(personneResponse);
+        //When
+        Personne personAded =personneServiceImpl.addPersonne(personneResponse);
 
-    //Then
-    assertEquals("tonux",personAded.getNom());
-    assertEquals(1,personAded.getId());
-    verify(personneRepository,atLeastOnce()).save(any());
-  }
-  @Test
+        //Then
+        assertEquals("tonux",personAded.getNom());
+        assertEquals(1,personAded.getId());
+        verify(personneRepository,atLeastOnce()).save(any());
+    }
+    @Test
     public void deletePersonne(){
         Personne person = new Personne("tonux", "samb", 50);
         person.setId(1L);
@@ -139,21 +139,16 @@ public class PersonneServiceImplTest {
     @Test
     public void getPersonneParNom(){
         List<Personne> list = new ArrayList<Personne>();
-        list.add(new Personne("tonuxxx", "samb", 50));
-        list.add(new Personne("tonux", "sow", 50));
-        list.add(new Personne("Nambe", "tall", 50));
-       when(personneRepository.findByNom("tonux")).thenReturn(list);
+        list.add(new Personne("toloi", "samb", 50));
+        list.add(new Personne("daichi", "kamada", 50));
+        list.add(new Personne("wataru", "endo", 50));
+        when(personneRepository.findByNom("daichi")).thenReturn(list);
         //When
-        List<Personne> personList = personneServiceImpl.getPersonneParNom("tonux");
+        List<Personne> personList = personneServiceImpl.getPersonneParNom("daichi");
         //Then
         assertEquals(3, personList.size());
-        assertEquals("sow",
-        personList.get(1).getPrenom());
-        //assertEquals("sow",
-              //  personList.get(1).getPrenom());
-       // verify(personneRepository, atLeastOnce()).findByNom("tonux");
-
-
+        assertEquals("kamada",
+                personList.get(1).getPrenom());
 
     }
 
@@ -197,10 +192,10 @@ public class PersonneServiceImplTest {
         // Création de la liste de personnes attendue
         List<Personne> personnes = Arrays.asList(
                 new Personne("tonux", "samb", 50),
-                new Personne("thioune", "serignecheikh", 23),
-                new Personne("niang", "ndeyekhady", 23),
-                new Personne("sow", "fatou", 26),
-                new Personne("seye", "madjiguen", 24)
+                new Personne("nagatomo", "yuto", 13),
+                new Personne("sakai", "gotuku", 13),
+                new Personne("asano", "asano", 16),
+                new Personne("denis", "zakaria", 14)
         );
 
         // Configuration du comportement du mock du repository de personne
@@ -258,8 +253,8 @@ public class PersonneServiceImplTest {
         //Given
         List<Personne> list = new ArrayList<Personne>();
         list.add(new Personne("tonux","samb",50));
-        list.add(new Personne("lahad","mbacke",23));
-        list.add(new Personne("baye","seck",24));
+        list.add(new Personne("dendryk","boyata",13));
+        list.add(new Personne("naser","chadli",14));
         when(personneRepository.findAll()).thenReturn(list);
         //When
         List<Personne> personList = personneServiceImpl.getPersonnes();
@@ -272,13 +267,13 @@ public class PersonneServiceImplTest {
 
     @Test
     public void getPersonneParNomAndPrenom() {
-        String nom="tall";
-        String prenom="ahmad";
+        String nom="sankhare";
+        String prenom="ousmane";
         //Given
         List<Personne> list = new ArrayList<Personne>();
         list.add(new Personne("tonux","samb",50));
-        list.add(new Personne("tonux","mbacke",23));
-        list.add(new Personne("seck","baye",24));
+        list.add(new Personne("robin","gosens",13));
+        list.add(new Personne("boubacar","soumare",14));
         when(personneRepository.findAll()).thenReturn(list);
         //When
         List<Personne> personList = personneServiceImpl.getPersonneParNomAndPrenom("tonux","samb");
@@ -289,13 +284,13 @@ public class PersonneServiceImplTest {
 
     @Test
     public void getPersonneNomAndPrenom() {
-        String nom="tall";
-        String prenom="ahmad";
+        String nom="ousmane";
+        String prenom="sankhare";
         //Given
         List<Personne> list = new ArrayList<Personne>();
         list.add(new Personne("tonux","samb",50));
-        list.add(new Personne("tonux","mbacke",23));
-        list.add(new Personne("tall","ahmad",24));
+        list.add(new Personne("wilfried","ndidi",23));
+        list.add(new Personne("sankhare","ousmane",14));
         when(personneRepository.findAll()).thenReturn(list);
         //When
         List<Personne> personList = personneServiceImpl.getPersonneNomAndPrenom("tonux","samb");
@@ -306,13 +301,13 @@ public class PersonneServiceImplTest {
 
     @Test
     public void getPersonneNomAndPrenom2() {
-        String nom="seck";
-        String prenom="baye";
+        String nom="diagne";
+        String prenom="massaer";
         //Given
         List<Personne> list = new ArrayList<Personne>();
         list.add(new Personne("tonux","samb",50));
-        list.add(new Personne("tonux","mbacke",23));
-        list.add(new Personne("seck","baye",24));
+        list.add(new Personne("wilfried","ndidi",13));
+        list.add(new Personne("diagne","massear",14));
         when(personneRepository.findAll()).thenReturn(list);
         //When
         List<Personne> personList = personneServiceImpl.getPersonneNomAndPrenom2("tonux","samb");
@@ -326,8 +321,8 @@ public class PersonneServiceImplTest {
         //Given
         List<Personne> list = new ArrayList<Personne>();
         list.add(new Personne("tonux","samb",50));
-        list.add(new Personne("tonux","tall",23));
-        list.add(new Personne("penda","baye",24));
+        list.add(new Personne("wilfried","ndidi",13));
+        list.add(new Personne("earling","halland",14));
         when(personneRepository.findAll()).thenReturn(list);
         //When
         List<Personne> personList = personneServiceImpl.ageGreaterThan(40);
