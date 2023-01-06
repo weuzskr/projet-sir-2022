@@ -14,6 +14,8 @@ class FormationDemo1ApplicationTests {
     void contextLoads() {
         boolean c=true;
         assertTrue(c);
+        /* Rien a faire */
+        /* Java est un language qui decourage les devellopeur a part ca coplexité*/
     }
 
 }

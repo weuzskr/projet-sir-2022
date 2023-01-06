@@ -89,7 +89,7 @@ class ApiPersonneControllerTest {
     @WithMockUser(username = "michel@formation.sn", password = "Passer@123", authorities = { "ADMIN" })
     void updatePersonne() throws Exception {
         String body = "{\n" +
-                "    \"nom\": \"ahmad\",\n" +
+                "    \"nom\": \"ousmane\",\n" +
 
                 "}";
         RequestBuilder requestBuilder = MockMvcRequestBuilders

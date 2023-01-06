@@ -163,12 +163,7 @@ public class PersonneControllerTest {
   @Test
   @WithMockUser(username = "michel@formation.sn", password = "Passer@123", authorities = {"ADMIN"})
   public void registration() throws Exception {
-    String body = "{\n" +
-            "    \"username\": \"Tal@formation.ca\",\n" +
-            "    \"password\": \"Passer@123\"\n" +
-            "    \"name\": \"Tal\"\n" +
-            "    \"authoritie\": \"READ\"\n" +
-            "}";
+    String body = "{\n" + " \"username\": \"Groupe-4-@formation.ca\",\n" + "    \"password\": \"Passer@123\"\n" + "    \"name\": \"sankhare\"\n" + "    \"authoritie\": \"READ\"\n" + "}";
     RequestBuilder requestBuilder = MockMvcRequestBuilders
             .post("/api/v2/auth/registration")
             .content(body)
@@ -184,15 +179,6 @@ public class PersonneControllerTest {
     assertTrue(c); // Fest assertio
   }
 
-
-
-
-
-
-
-
-
-
   @Test
   public void ajouterPerson_() throws Exception {
     Personne personne = new Personne("tonux", "samb", 40);
@@ -203,8 +189,6 @@ public class PersonneControllerTest {
             .exchange("http://localhost:" + port + "/ajouterPersonne", HttpMethod.POST, entity, Personne.class, personne);
     assertNotNull(responseEntity);
   }
-
-
   @Test
   @WithMockUser(username = "michel@formation.sn", password = "Passer@123", authorities = {"ADMIN"})
   public void samaTest() throws Exception {
@@ -229,7 +213,6 @@ public class PersonneControllerTest {
     MockHttpServletResponse response = mvcResult.getResponse();
     assertEquals(HttpStatus.OK.value(), response.getStatus());
   }
-
 
   @ParameterizedTest
   @CsvSource({"age?nom=40", "bbb?nom=Abdel&prenom=Moussa", "ccc?nom=Abdel&prenom=Moussa", "aaa?nom=Abdel&prenom=Moussa", "search?nom=Abdel", "2"})
@@ -271,9 +254,6 @@ public class PersonneControllerTest {
                     .accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk());
   }*/
-
-
-
 
   public static String asJsonString(final Object obj) {
     try {

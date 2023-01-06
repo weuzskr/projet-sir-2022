@@ -68,11 +68,7 @@ public class UtilisateurControllerTest {
     @WithMockUser(username = "michel@formation.sn", password = "Passer@123", authorities = { "ADMIN" })
     public void registration() throws Exception {
         String body = "{\n" +
-                "    \"username\": \"Tal@formation.ca\",\n" +
-                "    \"password\": \"Passer@123\"\n" +
-                "    \"name\": \"Tal\"\n" +
-                "    \"authoritie\": \"READ\"\n" +
-                "}";
+                "    \"username\": \"Groupe-4-@formation.ca\",\n" + "    \"password\": \"Passer@123\"\n" + "    \"name\": \"sankhare\"\n" + "    \"authoritie\": \"READ\"\n" + "}";
         RequestBuilder requestBuilder = MockMvcRequestBuilders
                 .post("/api/v2/auth/registration")
                 .content(body)
