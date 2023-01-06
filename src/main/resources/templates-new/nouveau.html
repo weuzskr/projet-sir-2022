@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="x-ua-compatible">
+    </head>
+
+    <body >
+        <div>
+            <form th:action="@{/ajouterPersonne}" th:object="${personne}" method="post">
+                <input type="text" id="nom" th:field="*{nom}" >
+                <input type="text" id="prenom" th:field="*{prenom}" >
+                <input type="number" id="age" th:field="*{age}" >
+
+                <input type="submit" value="Ajouter">
+            </form>
+        </div>
+
+    </body>
+</html>

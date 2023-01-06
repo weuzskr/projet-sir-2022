@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="x-ua-compatible">
+        <link rel="stylesheet" href="../static/style.css">
+
+    </head>
+
+    <body th:switch="${personnes}">
+        <div>
+            <div>
+                <h3 th:case="null"> Pas de données</h3>
+                <div th:case="*">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nom</th>
+                                <th>Prenom</th>
+                                <th>Age</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="personne: ${personnes}">
+                            <td th:text="${personne.nom}"></td>
+                            <td th:text="${personne.prenom}"></td>
+                            <td th:text="${personne.age}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    <p><a href="/nouveau"> Ajouter Personne</a></p>
+    </body>
+</html>
