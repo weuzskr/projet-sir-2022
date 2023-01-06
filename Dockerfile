@@ -1,8 +1,6 @@
-FROM openjdk:17-jdk-alpine
-ADD target/*.jar appprojet.jar
+FROM openjdk:17
+ADD target/*.jar projet4.jar
 EXPOSE 8080
-ENTRYPOINT ["java","-jar","/appprojet.jar"]
+ENTRYPOINT ["java","-jar","/projet4.jar"]
 VOLUME /main-app
-LABEL key="groupeprojet2022"
-
-# java -jar app.jar
+LABEL key="groupeprojet-4-2022"
