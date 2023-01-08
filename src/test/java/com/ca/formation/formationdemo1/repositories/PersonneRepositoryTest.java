@@ -58,12 +58,13 @@ public class PersonneRepositoryTest {
     }
     @Test
     public void create(){
-        Personne personne = personneRepository.save(new Personne("tonux", "samb", 50));
+        Personne personne = personneRepository.save(new Personne("tonux", "mor_talla", 50));
         assertNotNull(personne);
         assertEquals("tonux", personne.getNom());
     }
     ///
     @Test
+
     public void update(){
         //Given
         Personne personne = personneRepository.save(new Personne("tonux", "samb", 50));
