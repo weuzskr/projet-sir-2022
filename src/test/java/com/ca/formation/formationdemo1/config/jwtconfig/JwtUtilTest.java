@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class JwtUtilTest {
 
     @Autowired
-    private JwtUtil jwtUtil;
+    public JwtUtil jwtUtil;
 
     @Test
     @DisplayName("Should return true when the token is valid")
