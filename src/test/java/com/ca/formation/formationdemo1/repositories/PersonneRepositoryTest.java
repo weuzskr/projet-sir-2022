@@ -64,6 +64,7 @@ public class PersonneRepositoryTest {
     }
     ///
     @Test
+
     public void update(){
         //Given
         Personne personne = personneRepository.save(new Personne("tonux", "samb", 50));
