@@ -26,8 +26,10 @@ public class InitDatabase implements ApplicationListener<ApplicationReadyEvent> 
           .registration(new Utilisateur("michel@formation.sn", "Passer@123", "Michel", Set.of(new Role(Role.READ))));
       utilisateurService
           .registration(new Utilisateur("clara@formation.sn", "Passer@123", "Clara", Set.of(new Role(Role.ADMIN))));
-    } catch (Exception e) {
-      e.printStackTrace();
+    }
+    catch (Exception e)
+     {
+    //  e.printStackTrace();
     }
   }
 }
