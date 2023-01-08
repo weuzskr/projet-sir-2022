@@ -28,7 +28,7 @@ class JwtFilterTest {
     private FilterChain filterChain;
 
     @InjectMocks
-    public JwtFilter jwtFilter;
+    private JwtFilter jwtFilter;
 
     @Test
     @DisplayName("Should not set the authentication when the header is null")

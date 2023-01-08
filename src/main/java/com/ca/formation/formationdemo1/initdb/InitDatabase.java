@@ -29,7 +29,7 @@ public class InitDatabase implements ApplicationListener<ApplicationReadyEvent> 
     }
     catch (Exception e)
      {
-    //  e.printStackTrace();
+     e.printStackTrace();
     }
   }
 }
