@@ -57,6 +57,4 @@ class SwaggerConfigTest {
         assertNotNull(swaggerConfig.publicApi());
     }
 
-
-
 }

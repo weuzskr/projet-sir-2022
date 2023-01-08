@@ -24,8 +24,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
-
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
 class ApiPersonneControllerTest {
@@ -41,18 +39,10 @@ class ApiPersonneControllerTest {
 
     @LocalServerPort
     private int port;
-
     private String getRootUrl() {
         return "http://localhost:" + port + "/api/v2/personnes";
     }
-
     private String tokenRequest;
-
-
-
-
-
-
     @Test
     @WithMockUser(username = "michel@formation.sn", password = "Passer@123", authorities = { "ADMIN" })
     void byebye() throws Exception {
@@ -69,10 +59,6 @@ class ApiPersonneControllerTest {
         Assert.assertEquals("Bye bye" ,contentAsString);
     }
 
-
-
-
-
     @Test
     void addPersonne() {
         Personne personne = new Personne("tonux", "samb", 40);
@@ -85,13 +71,9 @@ class ApiPersonneControllerTest {
     }
 
     @Test
-
     @WithMockUser(username = "michel@formation.sn", password = "Passer@123", authorities = { "ADMIN" })
     void updatePersonne() throws Exception {
-        String body = "{\n" +
-                "    \"nom\": \"ousmane\",\n" +
-
-                "}";
+        String body = "{\n" + " \"nom\": \"ousmane\",\n" + "}";
         RequestBuilder requestBuilder = MockMvcRequestBuilders
                 .patch(getRootUrl()+"/3")
                 .content(body)
@@ -141,9 +123,7 @@ class ApiPersonneControllerTest {
         System.out.println(contentAsString);
         assertNotNull(contentAsString);
     }
-
-
-    /*@Test
+    @Test
     @WithMockUser(username = "michel@formation.sn", password = "Passer@123", authorities = { "READ" })
     void deletePerson() throws Exception {
         // TODO : add test deletePerson
@@ -153,7 +133,5 @@ class ApiPersonneControllerTest {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
         assertNotNull(status().isOk());
-    }*/
-
-
+    }
 }

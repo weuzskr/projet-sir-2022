@@ -230,10 +230,7 @@ public class PersonneControllerTest {
     assertNotNull(contentAsString);
 
   }
-
-
-
-  /*@Test
+  @Test
   @WithMockUser(username = "clara@formation.ca", password = "Passer@123", authorities = {"ADMIN"})
   public void createUtilisateurAPI() throws Exception {
     mockMvc.perform(MockMvcRequestBuilders
@@ -242,9 +239,9 @@ public class PersonneControllerTest {
                     .contentType(MediaType.APPLICATION_JSON)
                     .accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk());
-  } */
+  }
 
- /* @Test
+  @Test
   @WithMockUser(username = "clara@formation.ca", password = "Passer@123", authorities = {"ADMIN"})
   public void addPersonneAPI() throws Exception {
     mockMvc.perform(MockMvcRequestBuilders
@@ -253,7 +250,7 @@ public class PersonneControllerTest {
                     .contentType(MediaType.APPLICATION_JSON)
                     .accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk());
-  }*/
+  }
 
   public static String asJsonString(final Object obj) {
     try {

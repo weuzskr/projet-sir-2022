@@ -45,7 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private String apiDocPath;
     @Value("${springdoc.swagger-ui.path}")
     private String swaggerPath;
-    //Logger logger= LoggerFactory.getLogger( SecurityConfig.class);
+    Logger logger= LoggerFactory.getLogger( SecurityConfig.class);
 
     public SecurityConfig(UtilisateurRepository utilisateurRepository, JwtFilter jwtFilter) {
 
@@ -67,17 +67,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
-        // activer les cors et desactiver les CSRF
         http = http.cors().and().csrf().disable();
 
         // http.csrf().disable(); // Complian
 
         // Mettre la getion de la session a un sans etat
-        http = http
-                .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
+        http = http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
         ;
 
         // mettre pas autoriser si on a une exception
@@ -85,8 +80,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling()
                 .authenticationEntryPoint(
                         ((request, response, authException) -> {
-                           // logger.info("Demande pas autoriser -");
-                            //logger.info(authException.getMessage());
                             response.sendError(HttpServletResponse.SC_UNAUTHORIZED, authException.getMessage());
                         })
                 )
@@ -109,6 +102,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     // mettre le type d'encodage du mot de passe
     @Bean
     public PasswordEncoder passwordEncoder(){
+
         return new BCryptPasswordEncoder();
     }
 
