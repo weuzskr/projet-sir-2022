@@ -2,8 +2,8 @@ version: '3.1'
 
 services:
   app:
-    container_name: projet-g-4
-    image: projet-sir-g-4
+    container_name: projetsir2022/groupe4
+    image: projet-sir-g4:1
     build:
       context: .
       dockerfile: Dockerfile
